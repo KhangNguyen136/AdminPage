@@ -12,29 +12,53 @@ $("#product-detail-form")
         }
     });
 
+function Loading() {}
 function submitForm() {
     // Initiate Variables With Form Content
     var name = $("#name").val();
     var price = $("#price").val();
-    var imgSrc = $("#imgSrc").val();
+    var imgSrc = $("#imgSrc")[0].files[0];
     var type = $("[name='type']:checked").val();
     var more = $("[name='more']:checked").val();
     var description = $("#description").val();
     var formula = $("#formula").val();
+    var formdata = new FormData();
+    formdata.append("name", name);
+    formdata.append("price", price);
+    formdata.append("imgSrc", imgSrc);
+    formdata.append("type", type);
+    formdata.append("more", more);
+    formdata.append("description", description);
+    formdata.append("formula", formula);
+    console.log(formdata);
+    var loader = $("#loader")[0];
+    loader.innerHTML = `<div class="modal fade" id="loadMe" role="dialog">
+      <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+          <div class="modal-body text-center">
+            <div class="loader"></div>
+            <div clas="loader-txt">
+              <p>Updating Product</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>`;
+    $("#loadMe").modal({
+        backdrop: "static", //remove ability to close modal with click
+        keyboard: false, //remove option to close with keyboard
+        show: true, //Display loader!
+    });
 
-    var data = { name, price, imgSrc, type, more, description, formula };
-    console.log(data);
     //Submit form
     fetch("", {
         method: "POST",
-        body: JSON.stringify(data),
-        headers: {
-            "content-type": "application/json",
-        },
+        body: formdata,
     })
         .then((res) => res.json())
         .then((res) => {
             if (res.log == "success") {
+                $("#loadMe").modal("hide");
                 var dialog = $("#dialog")[0];
                 dialog.innerHTML = `<div class="modal fade" id="myModal" role="dialog">
         <div class="modal-dialog">
