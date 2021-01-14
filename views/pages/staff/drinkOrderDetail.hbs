@@ -2,14 +2,45 @@
 <div id="wrapper">
     {{>sidebarStaff}}
     <div class="container-fluid">
-        <h1>Bill Detail</h1>
-        <h3>Customer name: {{bill.customerName}}</h3>
-        <h3>Ship address: {{bill.customerAddress}}</h3>
-        <h3>Phone number: {{bill.customerPhone}}</h3>
-        <h3>Customer email: {{bill.customerEmail}}</h3>
-        <h3>Order date: {{bill.date}}</h3>
-        <h3>State: {{bill.status}}</h3>
-        <table class="table table-responsive">
+        <h1 class="my-2" style="text-align: center;">Drink order detail</h1>
+        {{!-- <h3>Customer name: {{bill.customerName}}</h3> --}}
+        <div class="form-group col-12 row">
+                    <label for="name" class="control-label col-2">Customer name:</label>
+                    <input type="text" readonly class="form-control col-10" id="name" value="{{bill.customerName}}" required>
+                    <div class="help-block with-errors"></div>
+        </div>
+        {{!-- <h3>Ship address: {{bill.customerAddress}}</h3> --}}
+        <div class="form-group col-12 row">
+                    <label for="name" class="control-label col-2">Ship address:</label>
+                    <input type="text" readonly class="form-control col-10" id="name" value="{{bill.customerAddress}}" required>
+                    <div class="help-block with-errors"></div>
+        </div>
+        {{!-- <h3>Phone number: {{bill.customerPhone}}</h3> --}}
+        <div class="form-group col-12 row">
+                    <label for="name" class="control-label col-2">Phone number:</label>
+                    <input type="text" readonly class="form-control col-10" id="name" value="{{bill.customerPhone}}" required>
+                    <div class="help-block with-errors"></div>
+        </div>
+        {{!-- <h3>Customer email: {{bill.customerEmail}}</h3> --}}
+        <div class="form-group col-12 row">
+                    <label for="name" class="control-label col-2">Customer email:</label>
+                    <input type="text" readonly class="form-control col-10" id="name" value="{{bill.customerEmail}}" required>
+                    <div class="help-block with-errors"></div>
+        </div>
+        {{!-- <h3>Order date: {{bill.date}}</h3> --}}
+        <div class="form-group col-12 row">
+                    <label for="name" class="control-label col-2">Order date:</label>
+                    <input type="text" readonly class="form-control col-10" id="name" value="{{bill.date}}" required>
+                    <div class="help-block with-errors"></div>
+        </div>
+        {{!-- <h3>State: {{bill.status}}</h3> --}}
+        <div class="form-group col-12 row">
+                    <label for="name" class="control-label col-2">State:</label>
+                    <input type="text" readonly class="form-control col-10" id="name" value="{{bill.status}}" required>
+                    <div class="help-block with-errors"></div>
+        </div>
+        <div style="position: relative;">
+        <table class="table table-responsive vertical-center">
             <tr>
                 <th>Drink</th>
                 <th>Price</th>
@@ -21,15 +52,38 @@
                 <td>{{name}}</td>
                 <td class="text-center">{{price}}</td>
                 <td class="text-center">{{quantity}}</td>
-                <td class="text-center">0</td>
+                <td class="text-center"></td>
             </tr>
             {{/each}}
         </table>
-        <h3>Discount code: {{bill.discountCode}}</h3>
-        <h3>Discount value: {{bill.discountValue}}</h3>
-        <h3>Shipping fee: {{bill.shipping}}</h3>
-        <h3>Grand Total: {{bill.total}}</h3>
-        <a class="btn btn-primary" href="/info/edit">Update profile</a>
+        </div>
+        {{!-- <h3>Discount code: {{bill.discountCode}}</h3> --}}
+        <div class="form-group col-12 row">
+                    <label for="name" class="control-label col-2">Discount code:</label>
+                    <input type="text" readonly class="form-control col-10" id="name" value="{{bill.discountCode}}" required>
+                    <div class="help-block with-errors"></div>
+        </div>
+        {{!-- <h3>Discount value: {{bill.discountValue}}</h3> --}}
+        <div class="form-group col-12 row">
+                    <label for="name" class="control-label col-2">Discount value:</label>
+                    <input type="text" readonly class="form-control col-10" id="name" value="{{bill.discountValue}}" required>
+                    <div class="help-block with-errors"></div>
+        </div>
+        {{!-- <h3>Shipping fee: {{bill.shipping}}</h3> --}}
+        <div class="form-group col-12 row">
+                    <label for="name" class="control-label col-2">Shipping fee:</label>
+                    <input type="text" readonly class="form-control col-10" id="name" value="{{bill.shipping}}" required>
+                    <div class="help-block with-errors"></div>
+        </div>
+        {{!-- <h3>Grand Total: {{bill.total}}</h3> --}}
+        <div class="form-group col-12 row">
+                    <label for="name" class="control-label col-2">Grand Total:</label>
+                    <input type="text" readonly class="form-control col-10" id="name" value="{{bill.total}}" required>
+                    <div class="help-block with-errors"></div>
+        </div>
+        <div style="text-align: center;">
+        <a class="btn btn-primary my-2"  style="width: 50%;">Update</a>
+        </div>
     </div>
 </div>
 
