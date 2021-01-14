@@ -32,6 +32,40 @@
             </div>
 
         </form>
+        <hr>
+        <h2 class="my-3">Change password:</h2>
+        <form id="change-password-form">
+            <div class="form-group row">
+                <label for="old-password" class="col-md-2 h5"> Old password:</label>
+                <div class="col-md-10">
+                    <input type="password" class="form-controlt h5" id="old-password" required name="old-password"
+                        data-error="Please enter your address">
+                    <div class="help-block with-errors"></div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="new-password" class="col-md-2 h5"> New password:</label>
+                <div class="col-md-10">
+                    <input type="password" class="form-controlt h5" id="new-password" required name="new-password"
+                        data-error="Please enter your address">
+                    <div class="help-block with-errors"></div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="confirm-password" class="col-md-2 h5"> Confirm new
+                    password:</label>
+                <div class="col-md-10">
+                    <input type="password" class="form-controlt h5" id="confirm-password" required
+                        name="confirm-password" <div class="help-block with-errors">
+                </div>
+            </div>
+            <div class="text-center">
+                <div class="pwd-not-match"></div>
+                <button type="submit" id="change-password-submit" class="btn btn-primary">Change
+                    password</button>
+
+            </div>
+        </form>
 
         <div id="dialog"></div>
         <div id="msgSubmit"></div>
@@ -41,4 +75,6 @@
 {{>scrolltotop}}
 {{#extend "script"}}
 <script src="/js/staff-update-form.js"></script>
+<script src="/js/change-password.js"></script>
+
 {{/extend}}

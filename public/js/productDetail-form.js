@@ -19,6 +19,9 @@ function submitForm() {
     var imgSrc = $("#imgSrc")[0].files[0];
     var type = $("[name='type']:checked").val();
     var more = $("[name='more']:checked").val();
+    if (more == undefined) {
+        more = "";
+    }
     var description = $("#description").val();
     var formula = $("#formula").val();
     var formdata = new FormData();
@@ -29,7 +32,6 @@ function submitForm() {
     formdata.append("more", more);
     formdata.append("description", description);
     formdata.append("formula", formula);
-    console.log(formdata);
     $("#loadMe").modal({
         //remove option to close with keyboard
         show: true, //Display loader!

@@ -1,6 +1,7 @@
 const { StaffModel } = require("../staffModel");
 const { ObjectId } = require("mongodb");
-
+const bcrypt = require("bcryptjs");
+const { to } = require("await-to-js");
 const getStaffList = async () => {
     const list = await StaffModel.find().lean();
     return list;
@@ -34,10 +35,29 @@ const addStaff = async (data) => {
     const staff = new StaffModel(data);
     await staff.save();
 };
+const changePassword = async (staffId, oldpassword, newpassword) => {
+    const user = await StaffModel.findOne({
+        _id: ObjectId(staffId),
+    }).catch((err) => {
+        throw new Error("finding user failed");
+    });
+    var [err, res] = await to(bcrypt.compare(oldpassword, user.password));
+    if (!res) {
+        throw new Error("Password wrong!");
+    }
+    var [err, hash] = await to(bcrypt.hash(newpassword, 10));
+    if (err) {
+        throw new Error("Bcrypt failure!");
+    }
+    user.password = hash;
+    user.save();
+};
 module.exports = {
     addStaff,
     getStaffById,
     getStaffList,
     updateStaff,
     deleteStaff,
+    updateStaff,
+    changePassword,
 };

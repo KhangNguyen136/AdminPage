@@ -15,14 +15,14 @@ exports.index = async (req, res, next) => {
     res.render("pages/staff/drinkOrder", { bills: bills });
 };
 exports.detail = async (req, res, next) => {
-    if (!req.user) {
-        res.status(401);
-        return res.json({ error: "access denied" });
-    }
-    if (req.user.role != "manager") {
-        res.status(401);
-        return res.json({ error: "access denied" });
-    }
+    // if (!req.user) {
+    //     res.status(401);
+    //     return res.json({ error: "access denied" });
+    // }
+    // if (req.user.role != "manager") {
+    //     res.status(401);
+    //     return res.json({ error: "access denied" });
+    // }
     const bill = await BillModel.findOne({
         _id: ObjectID(req.params.id),
     });
@@ -33,4 +33,13 @@ exports.detail = async (req, res, next) => {
         bill.discountValue = discountValue.value;
     }
     res.render("pages/staff/drinkOrderDetail", { bill: bill });
+};
+exports.updateState = async (req, res, next) => {
+    const bill = await BillModel.findOne({
+        _id: ObjectID(req.params.id),
+    });
+    bill.status = req.body.newState;
+    await bill.save();
+    console.log(bill);
+    res.end("done");
 };

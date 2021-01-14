@@ -3,13 +3,6 @@
     {{>sidebarStaff}}
     <div class="container-fluid">
         <h1>Staff Detail</h1>
-        {{!-- <h3>Full Name: {{user.name}}</h3>
-        <h3>Address: {{user.address}}</h3>
-        <h3>Phone Number: {{user.phoneNumber}}</h3>
-        <h3>Birthday: {{user.birthday}}</h3>
-        <h3>Start Date: {{user.startDate}}</h3>
-        <h3>Role: {{user.role}}</h3>
-        <h3>Salary: {{user.salary}}</h3> --}}
         <form data-toggle="validator" role="form" id="staff-update-form">
             <div class="row">
                 <div class="form-group col-12">
@@ -20,7 +13,8 @@
 
                 <div class="form-group col-12">
                     <label for="phoneNumber" class="control-label">Phone Number</label>
-                    <input type="text" readonly class="form-control" id="phoneNumber" value="{{user.phoneNumber}}" required>
+                    <input type="text" readonly class="form-control" id="phoneNumber" value="{{user.phoneNumber}}"
+                        required>
                     <div class=" help-block with-errors"></div>
                 </div>
                 <div class="form-group col-12">
@@ -30,12 +24,12 @@
                 </div>
                 <div class="form-group col-xl-12">
                     <label for=" birthday" class="control-label">Birthday</label>
-                    <input type="text" readonly data-dateValid class="form-control" id="birthday" value="{{user.birthday}}"
-                        required>
+                    <input type="text" readonly data-dateValid class="form-control" id="birthday"
+                        value="{{user.birthday}}" required>
                     <div class="help-block with-errors"></div>
         </form>
         <div style="text-align: center;">
-                <a class="btn btn-primary my-5" style="width: 50%;" href="/info/edit">Update profile</a>
+            <a class="btn btn-primary my-5" style="width: 50%;" href="/info/edit">Update profile</a>
         </div>
     </div>
 </div>

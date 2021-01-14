@@ -66,10 +66,13 @@ Router.put("/:id", async (req, res, next) => {
     return res.json({ log: "success" });
 });
 Router.delete("/:id", async (req, res, next) => {
-    // if (!req.user || req.user.role != "manager") {
-    //     res.status(401);
-    //     return res.json({ err: "access denied" });
-    // }
+    if (!req.user || req.user.role != "manager") {
+        res.status(401);
+        return res.json({ err: "access denied" });
+    }
+    if (req.user.id == req.params.id) {
+        return res.json({ err: "You can't delete your self!!" });
+    }
     const [err, Staff] = await to(StaffServices.deleteStaff(req.params.id));
 
     if (err) {

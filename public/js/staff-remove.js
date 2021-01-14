@@ -26,9 +26,16 @@ $("[name='remove-icon']").on("click", function (event) {
       </div>`;
     $("#myModal").modal("show");
     $("#yes").on("click", () => {
-        staff.remove();
         fetch("/api/staffs/" + icon.id, {
             method: "DELETE",
-        });
+        })
+            .then((res) => res.json())
+            .then((res) => {
+                if (res.err) {
+                    alert(res.err);
+                } else {
+                    staff.remove();
+                }
+            });
     });
 });
